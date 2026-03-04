@@ -26,10 +26,10 @@
             <p>Keep track of your latest application details.</p>
             <form id="add-application-form">
             <label for="company">Company Name:</label>
-            <input type="text" id="company" name="company" required>
+            <input type="text" id="company" placeholder="e.g Google, Facebook" name="company" required>
 
             <label for="position">Position:</label>
-            <input type="text" id="position" name="position" required>
+            <input type="text" id="position" placeholder="e.g Junior Frontend Engineer" name="position" required>
 
             <label for="date">Application Date:</label>
             <input type="date" id="date" name="date" required>
@@ -44,8 +44,6 @@
             </select>
 
             <fieldset>
-                <legend class="visually-hidden">Application Details</legend>
-
                 <button type="submit">+ Add Job Application</button>
             </fieldset>
             </form>
@@ -55,12 +53,12 @@
             <h3>Quick Overview</h3>
             <dl class="stats-list">
             <div class="stat-item">
-                <dt>Active</dt>
                 <dd id="total-applications">0</dd>
+                <dt>Active</dt>
             </div>
             <div class="stat-item">
-                <dt>Interviews</dt>
                 <dd id="interviewing-count">0</dd>
+                <dt>Interviews</dt>
             </div>
             </dl>
         </section>
@@ -69,7 +67,7 @@
     <section class="dashboard-content"> <!-- Dashboard Content -->
         <header>
         <div class="content-header">
-        <h1>Active Applications</h1>
+        <h2>Active Applications</h2>
         <p>Track the progress of your current job search</p>
         </div>
 
@@ -81,7 +79,7 @@
 
        <div id="empty-state">
         <img src="assets/empty-state.png" alt="Empty State Illustration">
-        <h2>No Applications Added Yet</h2>
+        <h3>No Applications Added Yet</h3>
         <p>Start by adding your first job application using the form on the left.</p>
        </div>
     </section>
