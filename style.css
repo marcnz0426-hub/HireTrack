@@ -184,6 +184,7 @@ button[type="submit"] {
 
 .stats-overview {
     margin-top: auto;
+    margin-left: 12px;
 }
 
 section[class="stats-overview"] h3 {
