@@ -22,6 +22,7 @@ nav {
     font-size: 1.5rem;
     font-weight: bold;
     color: #FFFFFF;
+    padding-left: 2rem;
 }
 
 ul {
@@ -196,7 +197,7 @@ section[class="stats-overview"] h3 {
 dl[class="stats-list"] {
     display: flex;
     justify-content: start;
-    gap: 8rem;
+    gap: 2rem;
 }
 
 dd[id="total-applications"], dd[id="interviewing-count"] {
@@ -239,4 +240,121 @@ footer {
     padding: 0;
     font-weight: normal;
     color: #FFFFFF;
+}
+
+.dashboard-content {
+    flex-direction: column;
+    padding: 0;
+    border-top: 2px solid #003459;
+}
+
+.dashboard-content header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 36px;
+}
+
+.content-header h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #FFFFFF;
+    margin: 0;
+    padding: 0;
+}
+
+.content-header p {
+    font-size: 1rem;
+    font-weight: normal;
+    color: #FFFFFF;
+}
+
+.controls {
+    display: flex;
+    gap: 1rem;
+}
+
+img {
+    height: 16px;
+    width: 16px;
+    padding: 0 4px;
+}
+
+#filter img {
+    filter: brightness(0) invert(1);
+}
+
+#sort img {
+    filter: brightness(0) invert(1);
+}
+
+button[id="filter"] {
+    height: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    background-color: #00171F;
+    color: #FFFFFF;
+    border: 2px solid #007EA7;
+    border-radius: 8px;
+    outline: none;
+    cursor: pointer;
+}
+
+button[id="sort"] {
+    height: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    background-color: #00171F;
+    color: #FFFFFF;
+    border: 2px solid #007EA7;
+    border-radius: 8px;
+    outline: none;
+    cursor: pointer;
+}
+
+div[id="empty-state"] {
+    height: 76.5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-style: dashed;
+    border-color: #007EA7;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 8px;
+    border-width: 1px;
+    border-style: dashed;
+    
+}
+
+div[id="empty-state"] h3 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #FFFFFF;
+    margin: 16px;
+    padding: 0;
+}
+
+div[id="empty-state"] p {
+    font-size: 1rem;
+    font-weight: normal;
+    color: #FFFFFF;
+    margin: 0;
+    padding: 0;
+}
+
+span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #000000;
+    border-radius: 50%;
+    height: 64px;
+    width: 64px
+}
+
+#empty-state img {
+    height: 40px;
+    width: 40px
 }
