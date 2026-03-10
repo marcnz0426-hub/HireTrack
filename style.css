@@ -15,7 +15,7 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem
+    padding: 1rem;
 }
 
 .logo {
@@ -325,7 +325,7 @@ div[id="empty-state"] {
     border-radius: 8px;
     border-width: 1px;
     border-style: dashed;
-    
+    margin-right: 28px;
 }
 
 div[id="empty-state"] h3 {
