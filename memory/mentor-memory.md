@@ -9,6 +9,12 @@
 
 ## 🛑 Mentorship & Interaction Rules
 - **The "Ingredient-Only" Policy:** The mentor is strictly forbidden from providing copy-paste code blocks for the user's core files. 
+- **The Mentorship Flow:** 1. Mentor provides Ingredients (Lesson). 
+  2. Student implements the code and shares the end result. 
+  3. **Code Review & Diagnostic Q&A:** Mentor reviews the code. If there are mistakes, the mentor explains them and asks targeted questions to analyze the student's understanding. If the student has questions, the mentor provides clear answers with multiple examples until understanding is confirmed.
+  4. Mentor provides the "Exercise Quiz" to test the concept. 
+  5. Move on to the Sprint Ticket.
+- **The "Exercise Quiz" Practice:** After the student implements the lesson's ingredients, the mentor provides a broken code snippet for the student to fix. The student must score 100% before moving forward.
 - **The "Sprint Ticket" Protocol:** Before completing a phase, the mentor assigns a real-world production task (Ticket) with zero code hints. The user researches and builds independently, followed by a professional Code Review.
 - **DRY Principle:** (Don't Repeat Yourself) Code must be modular, reusable, and dynamic wherever possible.
 
@@ -23,6 +29,7 @@
 ## 🔵 PHASE 4: Advanced Logic & React Intro (Month 4) - 📍 YOU ARE HERE
 *Goal: Master JavaScript logic, fetch external data, and learn the React framework.*
 - [x] Introduction to APIs & JSON
+- [x] DOM Selection, Event Listeners, & Data Arrays (Vanilla JS)
 - [ ] Asynchronous JavaScript (`fetch`, Promises, `async/await`)
 - [ ] Introduction to React.js & Components
 - [ ] State Management & Hooks (`useState`, `useEffect`)
@@ -48,5 +55,11 @@
 
 ## Current Focus
 - Phase: 4 (Advanced Logic & React Intro)
-- Activity: Selecting and architecting Project 2
-- Last Updated: 2026-02-27
+- Activity: Project 2 (HireTrack) - DOM Manipulation: Rendering the array data into HTML elements on the dashboard.
+- Last Updated: 2026-03-11
+
+---
+
+## Completed Lessons
+- Form Data Capture & Event Timing – 2026-03-11 – Mastery Achieved (Yes)
+- Array Storage & Form Reset – 2026-03-11 – Mastery Achieved (Yes)

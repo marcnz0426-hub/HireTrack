@@ -52,6 +52,7 @@ main {
     grid-template-columns: 400px 1fr;
     display: grid;
     gap: 1rem;
+    min-height: calc(100vh - 120px);
 }
 
 aside {
@@ -62,6 +63,7 @@ aside {
 .sidebar {
     display: flex;
     flex-direction: column;
+    height: 100%;
     gap: 1rem;
     padding: 1rem;
 }
@@ -183,7 +185,6 @@ button[type="submit"] {
 }
 
 .stats-overview {
-    margin-top: auto;
     margin-left: 12px;
 }
 
@@ -244,7 +245,9 @@ footer {
 }
 
 .dashboard-content {
+    display: flex;
     flex-direction: column;
+    height: 100%;
     padding: 0;
     border-top: 2px solid #003459;
 }
@@ -314,7 +317,7 @@ button[id="sort"] {
 }
 
 div[id="empty-state"] {
-    height: 76.5%;
+    flex-grow: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
