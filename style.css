@@ -184,6 +184,11 @@ button[type="submit"] {
     cursor: pointer;
 }
 
+button[type="submit"]:hover {
+    background-color: #0a2f3c;
+    transition: background 0.2s ease;
+}
+
 .stats-overview {
     margin-left: 12px;
 }
@@ -304,6 +309,11 @@ button[id="filter"] {
     cursor: pointer;
 }
 
+button[id="filter"]:hover {
+    background-color: #0a2f3c;
+    transition: background 0.2s ease;
+}
+
 button[id="sort"] {
     height: 100%;
     padding: 10px;
@@ -314,6 +324,11 @@ button[id="sort"] {
     border-radius: 8px;
     outline: none;
     cursor: pointer;
+}
+
+button[id="sort"]:hover {
+    background-color: #0a2f3c;
+    transition: background 0.2s ease;
 }
 
 div[id="empty-state"] {
@@ -328,7 +343,6 @@ div[id="empty-state"] {
     padding: 10px;
     border-radius: 8px;
     border-width: 1px;
-    border-style: dashed;
     margin-right: 28px;
 }
 
@@ -362,3 +376,59 @@ span {
     height: 40px;
     width: 40px
 }
+
+.card {
+    width: 100%;
+    border-collapse: separate; /* Allows for border-radius to show */
+    border-spacing: 0;
+    background-color: rgba(255, 255, 255, 0.03); /* Subtle dark glass effect */
+    border: 1px solid rgba(255, 255, 255, 0.1); /* Matches your input borders */
+    border-radius: 8px;
+    overflow: hidden;
+    color: #ffffff;
+    font-family: inherit;
+    cursor: pointer;
+    width: 100%;
+    table-layout: fixed;
+}
+
+.card caption {
+    display: none;
+}
+
+.card thead th {
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 15px;
+    text-align: left;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #007EA7; 
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.card tbody th, .card tbody td {
+    padding: 16px 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    font-size: 0.95rem;
+}
+
+.card tbody th {
+    font-weight: 600;
+    color: #007EA7; 
+    text-align: left;
+}
+
+.card tbody tr:hover {
+    background-color: #0a2f3c;
+    transition: background 0.2s ease;
+}
+
+.card td:last-child {
+    font-weight: bold;
+}
+
+#application-container {
+    padding: 36px;
+}
+
