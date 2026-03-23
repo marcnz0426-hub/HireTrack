@@ -430,5 +430,6 @@ span {
 
 #application-container {
     padding: 36px;
+    display: none;
 }
 

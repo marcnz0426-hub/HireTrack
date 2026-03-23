@@ -7,6 +7,9 @@ const statusInput = document.getElementById("status")
 const applicationForm = document.getElementById("add-application-form")
 const applicationContainer = document.getElementById("application-container");
 const noApplicationsAddedYet = document.getElementById("empty-state")
+const totalApp = document.getElementById("total-applications")
+const interview = document.getElementById("interviewing-count")
+const applicationList = document.getElementById("application-list")
 
 applicationForm.addEventListener("submit", function(event) {
     event.preventDefault();
@@ -27,36 +30,40 @@ applicationForm.addEventListener("submit", function(event) {
     });
 
 function renderApplication() {
-    applicationContainer.innerHTML = "";
+    applicationList.innerHTML = "";
 
     // .forEach needs to be inside the function renderApplication
 
 jobApplicationList.forEach(function(application) {
     // HTML string using backticks and inject the data
        const applicationCardHTML =`
-            <table class="card">
-                <caption>Job Applications</caption>
-                <thead>
-                    <tr>
-                        <th>Company</th>
-                        <th>Position</th>
-                        <th>Date</th>
-                        <th>Status</th>
-                    </tr>
-                </thead>
-                <tbody>
                     <tr>
                         <th>${application.companyName}</th>
                         <td>${application.position}</td>
                         <td>${application.applicationDate}</td>
                         <td>${application.status}</td>
                     </tr>
-                </tbody>
-            </table>
        `;
-       // Append (add) this new HTML string into our container
-       applicationContainer.innerHTML += applicationCardHTML;
+       // Append (add) this new HTML string into container
+       applicationList.innerHTML += applicationCardHTML;
 
         noApplicationsAddedYet.style.display = "none";
+        applicationContainer.style.display = "block";
     });
+
+    updateStatsOverview();
+
+function updateStatsOverview() {
+    totalApp.textContent = jobApplicationList.length;
+
+    const interviewCount = jobApplicationList.filter(app => 
+        app.status === `Interviewing`).length;
+         interview.textContent = interviewCount;
+
+    const activeCount = jobApplicationList.filter(app =>
+        app.status === `Applied` || app.status === `Interviewing`
+    ).length;
+    totalApp.textContent = activeCount;
+} 
+
 }
