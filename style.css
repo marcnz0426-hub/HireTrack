@@ -293,6 +293,21 @@ img {
     filter: brightness(0) invert(1);
 }
 
+#filter-dropdown {
+    display: none;
+    position: absolute;
+    margin-top: 45px;
+    box-sizing: border-box;
+    background-color: #00171F;
+    color: #FFFFFF;
+    border: 1px solid #003459;
+    border-radius: 8px;
+    outline: none;
+    list-style: none;
+    cursor: pointer;
+    padding: 1px;
+}
+
 #sort img {
     filter: brightness(0) invert(1);
 }

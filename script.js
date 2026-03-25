@@ -1,15 +1,23 @@
 let jobApplicationList = [];
 
-const companyInput = document.getElementById("company")
-const positionInput = document.getElementById("position")
-const dateInput = document.getElementById("date")
-const statusInput = document.getElementById("status")
-const applicationForm = document.getElementById("add-application-form")
+const companyInput = document.getElementById("company");
+const positionInput = document.getElementById("position");
+const dateInput = document.getElementById("date");
+const statusInput = document.getElementById("status");
+const applicationForm = document.getElementById("add-application-form");
 const applicationContainer = document.getElementById("application-container");
-const noApplicationsAddedYet = document.getElementById("empty-state")
-const totalApp = document.getElementById("total-applications")
-const interview = document.getElementById("interviewing-count")
-const applicationList = document.getElementById("application-list")
+const noApplicationsAddedYet = document.getElementById("empty-state");
+const totalApp = document.getElementById("total-applications");
+const interview = document.getElementById("interviewing-count");
+const applicationList = document.getElementById("application-list");
+const filterBtn = document.getElementById("filter");
+const interviewing = document.getElementById("Interviewing");
+const applied = document.getElementById("Applied");
+const offered = document.getElementById("Offered");
+const rejected = document.getElementById("Rejected");
+const filterDropdown = document.getElementById("filter-dropdown");
+const filterOption = document.querySelectorAll(".filter-option");
+
 
 applicationForm.addEventListener("submit", function(event) {
     event.preventDefault();
@@ -26,15 +34,15 @@ applicationForm.addEventListener("submit", function(event) {
 
     // clear form and update the list on sidebar form
     applicationForm.reset();
-        renderApplication();
+        renderApplication(jobApplicationList);
     });
 
-function renderApplication() {
+function renderApplication(arrayToRender) {
     applicationList.innerHTML = "";
 
     // .forEach needs to be inside the function renderApplication
 
-jobApplicationList.forEach(function(application) {
+arrayToRender.forEach(function(application) {
     // HTML string using backticks and inject the data
        const applicationCardHTML =`
                     <tr>
@@ -67,3 +75,66 @@ function updateStatsOverview() {
 } 
 
 }
+
+filterBtn.addEventListener("click", function(event) {
+    event.preventDefault();
+
+    if (filterDropdown.style.display === "none" ||
+        filterDropdown.style.display === "") {
+            filterDropdown.style.display = "block";
+    }
+    else {
+        filterDropdown.style.display = "none";
+    }   
+});
+
+filterOption.forEach(item => {
+    item.addEventListener("click", function() {
+
+        const appStatus = item.getAttribute("data-status")
+    
+
+        if (appStatus === "All") {
+
+              // Render the master list
+        renderApplication(jobApplicationList);
+
+        // Hide the dropdown!
+        filterDropdown.style.display = "none";
+
+        // This tells the function to STOP and exit right now.
+        return;
+
+        }
+
+        // // If the user did NOT click "All", the code continues normally down here
+
+        // .filter() math
+      const filteredList = jobApplicationList.filter(app => 
+        app.status === appStatus);
+
+      // to render the filtered list
+      renderApplication(filteredList);
+
+      filterDropdown.style.display = "none";
+
+    });
+
+});
+
+document.addEventListener("click", function(event) {
+
+    // the user clicked the filter button
+    const clickedInsideButton = filterBtn.contains(event.target);
+
+    // the user clicked the filter-dropdown
+    const clickedDropdown = filterDropdown.contains(event.target);
+
+    // if the user did not clicked the filter button and filter dropdown
+    if (!clickedInsideButton && !clickedDropdown) {
+
+        // if the user clicked outside the button and dropdown
+        filterDropdown.style.display = "none";
+    }
+
+});
