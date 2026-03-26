@@ -11,12 +11,15 @@ const totalApp = document.getElementById("total-applications");
 const interview = document.getElementById("interviewing-count");
 const applicationList = document.getElementById("application-list");
 const filterBtn = document.getElementById("filter");
+const filterDropdown = document.getElementById("filter-dropdown");
+const filterOption = document.querySelectorAll(".filter-option");
 const interviewing = document.getElementById("Interviewing");
 const applied = document.getElementById("Applied");
 const offered = document.getElementById("Offered");
 const rejected = document.getElementById("Rejected");
-const filterDropdown = document.getElementById("filter-dropdown");
-const filterOption = document.querySelectorAll(".filter-option");
+const sortBtn = document.getElementById("sort");
+const sortDropdown = document.getElementById("sort-dropdown");
+const sortOption = document.querySelectorAll(".sort-option");
 
 
 applicationForm.addEventListener("submit", function(event) {
@@ -93,7 +96,6 @@ filterOption.forEach(item => {
 
         const appStatus = item.getAttribute("data-status")
     
-
         if (appStatus === "All") {
 
               // Render the master list
@@ -104,8 +106,7 @@ filterOption.forEach(item => {
 
         // This tells the function to STOP and exit right now.
         return;
-
-        }
+    }
 
         // // If the user did NOT click "All", the code continues normally down here
 
@@ -124,17 +125,72 @@ filterOption.forEach(item => {
 
 document.addEventListener("click", function(event) {
 
-    // the user clicked the filter button
+    // the user clicked the filter button and sort button
     const clickedInsideButton = filterBtn.contains(event.target);
+    const clickedInsideSortBtn = sortBtn.contains(event.target);
 
-    // the user clicked the filter-dropdown
+    // the user clicked the filter-dropdown and sort dorpdown
     const clickedDropdown = filterDropdown.contains(event.target);
+    const clickedSortDropdown = sortDropdown.contains(event.target)
 
     // if the user did not clicked the filter button and filter dropdown
-    if (!clickedInsideButton && !clickedDropdown) {
+    if (!clickedInsideButton && !clickedDropdown && 
+        !clickedInsideSortBtn && !clickedSortDropdown) {
 
         // if the user clicked outside the button and dropdown
         filterDropdown.style.display = "none";
+        sortDropdown.style.display = "none";
     }
+});
+
+sortBtn.addEventListener("click", function(event) {
+    event.preventDefault();
+
+    if (sortDropdown.style.display === "none" ||
+        sortDropdown.style.display === "") {
+            sortDropdown.style.display = "block";
+    }
+    else {
+        sortDropdown.style.display = "none";
+    }   
+});
+
+sortOption.forEach(item => {
+    item.addEventListener("click", function() {
+
+        const userChoice = item.getAttribute("data-sort")
+
+        if (userChoice === "az") {
+            jobApplicationList.sort(function(a, b) {
+
+        // compare company names A to B the companyName for the variables in const newApplication
+        return a.companyName.localeCompare(b.companyName);
+            });
+        }
+
+        else if (userChoice === "newest") {
+            jobApplicationList.sort(function(a, b) {
+            return new Date(b.applicationDate) - new Date(a.applicationDate);
+            })
+        }
+
+        else if (userChoice === "za") {
+            jobApplicationList.sort(function(a, b) {
+                return b.companyName.localeCompare(a.companyName);
+            });
+        }
+
+        else if (userChoice === "oldest") {
+            jobApplicationList.sort(function(a, b) {
+            return new Date(a.applicationDate) - new Date(b.applicationDate);
+            })
+        }
+
+        // sort math call
+    renderApplication(jobApplicationList);
+
+    sortDropdown.style.display = "none";
+
+    });
 
 });
