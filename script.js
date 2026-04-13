@@ -1,4 +1,5 @@
-let jobApplicationList = [];
+let jobApplicationList = 
+JSON.parse(localStorage.getItem("hireTrackJobs")) || [];
 
 const companyInput = document.getElementById("company");
 const positionInput = document.getElementById("position");
@@ -21,6 +22,7 @@ const sortBtn = document.getElementById("sort");
 const sortDropdown = document.getElementById("sort-dropdown");
 const sortOption = document.querySelectorAll(".sort-option");
 
+renderApplication(jobApplicationList);
 
 applicationForm.addEventListener("submit", function(event) {
     event.preventDefault();
@@ -34,6 +36,10 @@ applicationForm.addEventListener("submit", function(event) {
 
     // Push into master list array
     jobApplicationList.push(newApplication);
+
+    const stringifiedData = JSON.stringify(jobApplicationList);
+
+    localStorage.setItem("hireTrackJobs", stringifiedData);
 
     // clear form and update the list on sidebar form
     applicationForm.reset();
@@ -74,6 +80,7 @@ function updateStatsOverview() {
     const activeCount = jobApplicationList.filter(app =>
         app.status === `Applied` || app.status === `Interviewing`
     ).length;
+
     totalApp.textContent = activeCount;
 } 
 
@@ -94,31 +101,19 @@ filterBtn.addEventListener("click", function(event) {
 filterOption.forEach(item => {
     item.addEventListener("click", function() {
 
-        const appStatus = item.getAttribute("data-status")
+        const appStatus = item.getAttribute("data-status");
     
         if (appStatus === "All") {
-
-              // Render the master list
-        renderApplication(jobApplicationList);
-
-        // Hide the dropdown!
-        filterDropdown.style.display = "none";
-
-        // This tells the function to STOP and exit right now.
-        return;
+        renderApplication(jobApplicationList); // Render the master list
+        filterDropdown.style.display = "none"; // Hide the dropdown!
+        return; // This tells the function to STOP and exit right now.
     }
+        const filteredList = jobApplicationList.filter(app => 
+        app.status === appStatus); // .filter() math
 
-        // // If the user did NOT click "All", the code continues normally down here
-
-        // .filter() math
-      const filteredList = jobApplicationList.filter(app => 
-        app.status === appStatus);
-
-      // to render the filtered list
-      renderApplication(filteredList);
+        renderApplication(filteredList); // to render the filtered list
 
       filterDropdown.style.display = "none";
-
     });
 
 });
@@ -185,12 +180,8 @@ sortOption.forEach(item => {
             return new Date(a.applicationDate) - new Date(b.applicationDate);
             })
         }
-
-        // sort math call
-    renderApplication(jobApplicationList);
-
+        
+    renderApplication(jobApplicationList); // sort math call
     sortDropdown.style.display = "none";
-
     });
-
 });
