@@ -463,3 +463,19 @@ span {
     display: none;
 }
 
+button[class="delete"] img {
+   filter: brightness(0) invert(1); /* Turns the icon pure white */
+}
+
+button[class="delete"] {
+   background: none;
+   border: none;
+   padding: 0;
+   outline: inherit;
+   display: flex;
+   transform: scale(1.3);
+   align-items: center;
+   justify-content: center;
+   color: #FFFFFF;
+   cursor: pointer;
+}

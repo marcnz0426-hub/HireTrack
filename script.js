@@ -28,6 +28,7 @@ applicationForm.addEventListener("submit", function(event) {
     event.preventDefault();
 
     const newApplication = {
+        id: Date.now(), // this was added to assign ID on each job application
         companyName: companyInput.value,
         position: positionInput.value,
         applicationDate: dateInput.value,
@@ -49,23 +50,53 @@ applicationForm.addEventListener("submit", function(event) {
 function renderApplication(arrayToRender) {
     applicationList.innerHTML = "";
 
-    // .forEach needs to be inside the function renderApplication
+    //added if/else to render empty state when deleting every job applications
+    if (arrayToRender.length === 0) {
+        noApplicationsAddedYet.style.display = "flex";
+        applicationContainer.style.display = "none";
+    } else {
+        noApplicationsAddedYet.style.display = "none";
+        applicationContainer.style.display = "block";
 
+        // .forEach needs to be inside the function renderApplication
 arrayToRender.forEach(function(application) {
     // HTML string using backticks and inject the data
+    // added data-id="${application.id}" to assign Id when creating list
        const applicationCardHTML =`
-                    <tr>
+                    <tr data-id="${application.id}"> 
                         <th>${application.companyName}</th>
                         <td>${application.position}</td>
                         <td>${application.applicationDate}</td>
                         <td>${application.status}</td>
+                        <td>
+                            <button class="delete">
+                            <img src="assets/trashBin.svg" alt="Delete Icon">
+                            </button></td>
                     </tr>
        `;
        // Append (add) this new HTML string into container
        applicationList.innerHTML += applicationCardHTML;
+    });
+}
 
-        noApplicationsAddedYet.style.display = "none";
-        applicationContainer.style.display = "block";
+    applicationList.addEventListener("click", function(event) {
+        event.preventDefault(); // the application list table will listen for the click
+
+        const deleteBtn = event.target.closest('.delete'); //check if the clicked element is the icon/button
+
+        if (deleteBtn) {
+            const row = deleteBtn.closest(`tr`); //this is to find the specific row that has the button
+
+            const appId = Number(row.dataset.id);//this will cupture te job applicaction id
+
+            jobApplicationList = jobApplicationList.filter(app => app.id !== appId); //removed array using filter()
+
+            localStorage.setItem("hireTrackJobs", JSON.stringify(jobApplicationList)); //included this API to update localStorage when deleting items
+
+        renderApplication(jobApplicationList);
+
+        }
+
     });
 
     updateStatsOverview();
