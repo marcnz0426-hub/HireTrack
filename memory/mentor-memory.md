@@ -16,14 +16,14 @@
 ## Learner Profile
 - Background: No computer science background 
 - Learning Style: Kinesthetic learner (learns by building), 4–5 hours daily available 
-- Goal (6 months): International-level junior FULL-STACK readiness (MERN Stack), 3 SaaS-style real-world projects, interview-ready for global remote roles 
+- Goal (6 months): International-level junior FULL-STACK readiness (M.E.R.N Stack), 3 SaaS-style real-world projects, interview-ready for global remote roles 
 - Goal (12 months): Job-ready, AI-native full-stack developer with a standout portfolio.
 
 ---
 
 # 🗺️ Curriculum Blueprint
 
-## Phase 1: Foundations (Months 1-2)
+## Phase 1: Foundations (Months 1-2)dde
 - Status: ✅ COMPLETED
 
 ## Phase 2: Frontend Mastery (Months 3-5)

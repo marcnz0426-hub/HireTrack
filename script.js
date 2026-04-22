@@ -1,5 +1,4 @@
-let jobApplicationList = 
-JSON.parse(localStorage.getItem("hireTrackJobs")) || [];
+let jobApplicationList = [];
 
 const companyInput = document.getElementById("company");
 const positionInput = document.getElementById("position");
@@ -21,8 +20,36 @@ const rejected = document.getElementById("Rejected");
 const sortBtn = document.getElementById("sort");
 const sortDropdown = document.getElementById("sort-dropdown");
 const sortOption = document.querySelectorAll(".sort-option");
+const loadingScreen = document.getElementById("loading-message");
 
-renderApplication(jobApplicationList);
+noApplicationsAddedYet.style.display = "none"
+applicationContainer.style.display = "none"
+loadingScreen.style.display = "block"
+
+const fetchJob = new Promise(function(resolve, reject) {
+    setTimeout(function() {
+        const savedData = JSON.parse(localStorage.getItem("hireTrackJobs"));
+
+        if (savedData !== null) {
+            resolve(savedData); //Success!
+        } else {
+            reject([]); //Error!
+        }
+    }, 2000);
+});
+
+fetchJob
+    .then(function(data) {
+        jobApplicationList = data;
+        renderApplication(jobApplicationList);
+    })
+
+    .catch(function(error) {
+    })
+
+    .finally(function() {
+        loadingScreen.style.display = 'none'
+    });
 
 applicationForm.addEventListener("submit", function(event) {
     event.preventDefault();
@@ -87,7 +114,7 @@ arrayToRender.forEach(function(application) {
         if (deleteBtn) {
             const row = deleteBtn.closest(`tr`); //this is to find the specific row that has the button
 
-            const appId = Number(row.dataset.id);//this will cupture te job applicaction id
+            const appId = Number(row.dataset.id);//this will capture te job application id
 
             jobApplicationList = jobApplicationList.filter(app => app.id !== appId); //removed array using filter()
 
@@ -155,7 +182,7 @@ document.addEventListener("click", function(event) {
     const clickedInsideButton = filterBtn.contains(event.target);
     const clickedInsideSortBtn = sortBtn.contains(event.target);
 
-    // the user clicked the filter-dropdown and sort dorpdown
+    // the user clicked the filter-dropdown and sort dropdown
     const clickedDropdown = filterDropdown.contains(event.target);
     const clickedSortDropdown = sortDropdown.contains(event.target)
 
